@@ -1,84 +1,142 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Moch. Ichwan Alif Kurniawan
 
 ## Domain Proyek
 
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+Ditengah industri kuliner yang berkembang pesat, Rating dan ulasan sering kali berperan penting apakah restoran tersebut bisa diterima pelanggan atau tidak.Rating mencerminkan, kualitas makanan, kebersihan, suasana tempat, serta layanan yang diberikan. Oleh karena itu, pemiliki restoran harus memberikan segala usaha terbaiknya, agar restorannya mendapatkan rating yang baik. Pemilik restoran harus mengetahui faktor-faktor yang mempengaruhi popularitas restoran mereka. 
 
+Proyek ini bertujuan untuk membantu pemilik restoran dalam mengetahui apakah restoran mereka dapat bertahan kedepannya berdasarkan popularitas yang didapat saat ini. Dan untuk memberitahu bagaimana cara meningkatkan popularitas restoran mereka.
 **Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-- Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
-- Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
+- Studi Harvard Business School tentang Dampak Rating Yelp terhadap Pendapatan Restoran
+
+Studi yang dipimpin oleh Profesor Michael Luca dari Harvard Business School menemukan bahwa peningkatan satu bintang pada rating Yelp dapat meningkatkan pendapatan restoran sebesar 5–9%. Penelitian ini menyoroti pentingnya ulasan daring dalam memengaruhi keputusan konsumen dan kinerja bisnis restoran.
+
+- Pengaruh Online customer Review terhadap pembelian di tiktokshop
+Berdasarkan penelitian yang dilakukan, online customer review, online customer rating, dan cash on delivery berpengaruh positif terhadap keputusan pembelian
+-  Artikel selengkapnya dapat dilihat [di sini](https://www.gq.com/story/bad-yelp-reviews)
+- Atau melelui google scholar disini [Scholar](https://ejournal.unsrat.ac.id/index.php/emba/article/view/43393)
 
 ## Business Understanding
-
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
 
 Bagian laporan ini mencakup:
 
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Bagaimana memprediksi Popularitas Restoran berdasarkan rating yang didapat
+- Bagaimana mengetahui rata-rata rating yang didapat, berdasarkan dining rating dan delivery rating
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+- Memprediksi popularits restoran berdasarkan rating yang didapatkan
+- Mengetahui rata-rata rating restoran
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+Nantinya, berdarkan rata-rata rating yang didapatkan, maka model akan dilatih untuk mengetahui bagaimana performa restoran kedepannya.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
 
     ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+     Membangun model prediksi popularitas restoran menggunakan beberapa algoritma supervised learning seperti **Random Forest Regression**, **Gradient Boosting**, dan **Logistic Regression**. Performa model akan dievaluasi menggunakan metrik **MSE**, **RMSE**, dan **R2** untuk mengetahui model mana yang paling optimal.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Dataset yang diambil merupakan dataset yang dibuat oleh Zomato, sebuah website delivery makanan yang sudah bekerjasama dengan banyak restoran. Link tautan dataset dapat diunduh disini [Kaggle](https://www.kaggle.com/datasets/bhanupratapbiswas/zomato).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+### Variabel-variabel pada Zomato dataset adalah sebagai berikut:
+- Restauran_Name : merupakan nama dari restaurant
+- Category : merupakan category makanan yang diberikan oleh restoran
+- Pricing_For_2 : merupakan rata-rata harga yang diberikan restaurant
+- Locality : MErupakan Lokasi Restaurant
+- Dining_Rating : Merupakan rating yang diterima Restaurant
+- Dining_Review_Count : Merupakan jumlah review yang diterima oleh restaurant
+- Delivery_Rating : Merupakan rating pengantaran makanan dari Aplikasi Zoomato
+- Delivery_Rating_Count : Merupakan jumlah rating pengantaran makanan yang diterima restaurant, melalui aplikasi zoomato
+
+***Catatan: Hanya kolom yang saya pakai didalam dataset yang saya cantumkan, selebihnya merupakan kolom yang saya hapus***
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+- Melihat perbadingan antar kolom menggunakan **Histogram**, dan **Scatter Plot**, melihat outlier menggunakan **Box Plot**
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+**Urutan data Preparation saya Meliputi**
+- Data Loading
+- Data Preparation yang meliputi
+    1. Menghilangkan Missing Value
+    2. Melihat informasi data
+    3. Melihat statistik Deskriptif
+    4. Melakukan Drop columns
+    5. Mengecek Duplikasi
+    6. Mengubah Type Data
+    7. Menghilangkan Outlier
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+**Model yang Digunakan**
+1. Linear Regresion : Mampu membuat hubungan linear berdasarkan input dan target yang diharapkan
+2. Random Forest Regression : Membuat banyak pohon keputusan untuk membuat satu keputusan akhir
+3. Gradient Boosting : Membaut pohon keputusan secara berurutan, model ini memperbaiki pohon sebelumnya, sehingga prediksi akhir dapat mendekati sempurna
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+1. Linear Regression 
+    **Kelebihan**
+    - Sederhana dan mudah diimplementasi
+    - cepat dilatih
+    - Membutuhkan komputasi yang rendah
+    **Kekurangan**
+    - Rentan terhadap outlier
+    - Tidak cocok untuk data non-liniear 
+2. Random Forest Regression
+    **Kelebihan**
+    - Mampu menangani hubungan non-linear dan interaksi antar fitur secara efektif.
+    - Lebih tahan terhadap overfitting.
+    - Dapat menangani jumlah fitur yang besar.
+    **Kekurangan**
+    - Kurang bisa diintegrasi karena merupakan ensemble dari banyak pohon
+    - Membutuhkan lebih banyak daya komputasi
+    - Hasil prediksi bisa kurang baik
+3. Gradient Boosting Regression
+    **Kelebihan**
+    - Memberikan performa yang sangat tinggi
+    - Mampu menangani hubungan yang kompleks
+    - Fleksibel dan dapat digunakan di berbagai fungsi
+    **Kekurangan**
+    - Rentan terhadap Overfitting
+    - Membutuhkan komputasi lebih banyak
+    - Sulit diinterpretasikan
+**Model terbaik**
+Gradient Boosting merupakan model terbaik karena dapat memberikan performa yang lebih tinggi
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+**Metriks yang digunakan**
+***MSE***
+    Mengukur rata-rata dari kuadrat perbedaan antara nilai prediksi model dan nilai aktual
+***RMSE***
+    Akar Kuadrat dari MSE
+***R2***
+    Menjelaskan variasi nilai dari target yang digunakan
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+**Hasil Proyek**
+***Logistik Regression***
+- MSE       : 0.011732630406702327
+- RMSE      : 0.10831726735245091
+- R-squared : 0.514393124126306
+*Penjelasan*
+ nilai MSE 0.0117 dan RMSE 0.1083 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5143 menunjukkan kalau model dapat memprediksi 51% dari total variasi dari rata-rata rating.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
+***Random Forest Regression***
+MSE         : 0.011859347457627099
+RMSE        : 0.10890063111675294
+R-squared   : 0.5091483777151049
+*Penjelasan*
+nilai MSE 0.0118 dan RMSE 0.1089 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5091 menunjukkan kalau model dapat memprediksi lebih dari 50% total variasi dari rata-rata rating.
+***Gradient Boosting regression***
+MSE         : 0.011063820940422877
+RMSE        : 0.10518469917446585
+R-squared   : 0.542074766197737
+*Penjelasan*
+nilai MSE 0.0110 dan RMSE 0.1051 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5420 menunjukkan kalau model dapat memprediksi lebih dari 54% total variasi dari rata-rata rating.
 **---Ini adalah bagian akhir laporan---**
 
 _Catatan:_
