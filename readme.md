@@ -146,7 +146,7 @@ Gradient Boosting merupakan model terbaik karena dapat memberikan performa yang 
     Menjelaskan variasi nilai dari target yang digunakan
 
 **Hasil Proyek**
-***Logistik Regression***
+***linear Regression***
 - MSE       : 0.011732630406702327
 - RMSE      : 0.10831726735245091
 - R-squared : 0.514393124126306
