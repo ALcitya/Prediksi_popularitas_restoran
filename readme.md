@@ -35,7 +35,7 @@ Nantinya, berdarkan rata-rata rating yang didapatkan, maka model akan dilatih un
 
 
 ### Solution statements
-Membangun model prediksi popularitas restoran menggunakan beberapa algoritma supervised learning seperti **Random Forest Regression**, **Gradient Boosting**, dan **Logistic Regression**. Performa model akan dievaluasi menggunakan metrik **MSE**, **RMSE**, dan **R2** untuk mengetahui model mana yang paling optimal.
+Membangun model prediksi popularitas restoran menggunakan beberapa algoritma supervised learning seperti **Random Forest Regression**, **Gradient Boosting**, dan **Linear Regression**. Performa model akan dievaluasi menggunakan metrik **MSE**, **RMSE**, dan **R2** untuk mengetahui model mana yang paling optimal.
 
 ## Data Understanding
 Dataset yang diambil merupakan dataset yang dibuat oleh Zomato, sebuah website delivery makanan yang sudah bekerjasama dengan banyak restoran. Link tautan dataset dapat diunduh disini [Kaggle](https://www.kaggle.com/datasets/bhanupratapbiswas/zomato).
