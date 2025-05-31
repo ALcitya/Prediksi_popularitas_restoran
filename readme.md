@@ -133,6 +133,7 @@ Terdapat **Missing Value** dari tiga kolom, yakni :
     - Sulit diinterpretasikan
       
 **Model terbaik**
+
 Gradient Boosting merupakan model terbaik karena dapat memberikan performa yang lebih tinggi
 
 ## Evaluation
