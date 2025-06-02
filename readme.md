@@ -22,12 +22,14 @@ Bagian laporan ini mencakup:
 ### Problem Statements
 
 - Bagaimana memprediksi Popularitas Restoran berdasarkan rating yang didapat
-- Bagaimana mengetahui rata-rata rating yang didapat, berdasarkan dining rating dan delivery rating
+- Bagaimana mengetahui rata-rata Kesalahan dari model pelatihan
+- Bagaimana mengetahui model apa yang memiliki performa terbaik
 
 ### Goals
 
 - Memprediksi popularits restoran berdasarkan rating yang didapatkan
-- Mengetahui rata-rata rating restoran
+- Mengetahui rata-rata Kesalahan dari model Pelatihan
+- Mengetahui model yang memiliki performa terbaik
 
 Nantinya, berdarkan rata-rata rating yang didapatkan, maka model akan dilatih untuk mengetahui bagaimana performa restoran kedepannya.
 
@@ -73,11 +75,17 @@ Terdapat **Missing Value** dari tiga kolom, yakni :
 ## Data Preparation
 
 **Urutan data Preparation saya Meliputi**
+- Menghilangkan kolom tidak penting seperti Website,Phone_No, Latitude, Longitude, Known_For2, Known_For22, Address, Restaurant_Name.
+- Menghilangkan nilai NAN dan mengisi dengan nilai mean, dikolom Delivery_Rating: berfungsi untuk meningkatkan akurasi
+- Mengubah type data Locality dan Category, menjadi bertype category : untuk mempermudah pelatihan
+- Menghilangkan oulier di kolom Dining_Review_Count dan Delivery_Rating_Count, mengunakan metode Clip: agar tidak ada data yang hilang
 - Target Encoding untuk kolom untuk kolom Category: berfungsi untuk mengubah nilai kolom category sesuai kolom Dining_Rating
 - Target Encoding untuk kolom untuk kolom Locality: berfungsi untuk mengubah nilai kolom Locality sesuai kolom Delivery_Rating
+- Menghapus kolom Locality dan Category : untuk mempermudah pelatihan dataset
 - Membuat kolom mean_rating : Berfungsi membuat nilai rata-rata dari kolom Dining_Rating atau Delivery_Rating
 - Splitting dataset menjadi data latih dan data test
-- Melakukan standarisasi terhadap kolom numeric: berfungsi untuk menyetarakan nilai kolum numeric
+- Melakukan standarisasi terhadap Data pelatihan mengunakan fit.transform
+- Melakukan standarisasi terhapap data  Pengujian menggunakan transform
 
 ## Modeling
 
@@ -148,27 +156,52 @@ Gradient Boosting merupakan model terbaik karena dapat memberikan performa yang 
 
 **Hasil Proyek**
 ***linear Regression***
-- MSE       : 0.011732630406702327
-- RMSE      : 0.10831726735245091
-- R-squared : 0.514393124126306
+- MSE: 0.011732630406702327
+- RMSE: 0.10831726735245091
+- R-squared: 0.5143931241263064
   
 **Penjelasan**
  nilai MSE 0.0117 dan RMSE 0.1083 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5143 menunjukkan kalau model dapat memprediksi 51% dari total variasi dari rata-rata rating.
 
 ***Random Forest Regression***
-- MSE         : 0.011859347457627099
-- RMSE        : 0.10890063111675294
-- R-squared   : 0.5091483777151049
+- MSE (Random Forest): 0.011843120338983031
+- RMSE (Random Forest): 0.10882610136811403
+- R-squared (Random Forest): 0.5098200088937941
 
 **Penjelasan**
-nilai MSE 0.0118 dan RMSE 0.1089 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5091 menunjukkan kalau model dapat memprediksi lebih dari 50% total variasi dari rata-rata rating.
+nilai MSE 0.0118 dan RMSE 0.1088 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5098 menunjukkan kalau model dapat memprediksi lebih dari 50% total variasi dari rata-rata rating.
 
 ***Gradient Boosting regression***
-- MSE         : 0.011063820940422877
-- RMSE        : 0.10518469917446585
-- R-squared   : 0.542074766197737
+- MSE (Gradient Boosting): 0.01105952593128211
+- RMSE (Gradient Boosting): 0.10516428068161789
+- R-squared (Gradient Boosting): 0.54225253417460147
 
 **Penjelasan**
 nilai MSE 0.0110 dan RMSE 0.1051 menunjukkan rata-rata yang cukup kecil, yang berarti model dapat memprediksi target dengan kesalahan yang kecil. Nilai R2 0.5420 menunjukkan kalau model dapat memprediksi lebih dari 54% total variasi dari rata-rata rating.
 
+**Insight**
+1. Prediksi Popularitas restaurant dapat dilakukan mengunakan 3 model pelatihan yakni Linar Regression, Random Forest Regression, dan Gradient Boosting Regression
+2. Rata-rata Kesalahan dapat diketahui dari MSE dan RMSE dari Algoritma pelatihan.
+   - Linear Regression
+nilai MSE 0.0117 dan RMSE 0.1083 menunjukkan rata-rata yang cukup kecil
+   - Random Forest Regression
+nilai MSE 0.0118 dan RMSE 0.1088 menunjukkan rata-rata yang cukup kecil
+   - Gradient Boosting Regression
+nilai MSE 0.0110 dan RMSE 0.1051 menunjukkan rata-rata yang cukup kecil
+
+**Kesimpulan**
+Dapat Ditarik Kesimpulan kalau Gradient Boosting Regression memiliki rat-rata kesalahan yang paling kecil
+
+3. Untuk mengetahui Model dengan performa terbaik dapat diketahui dari nilai R2
+   - Linear Regression
+Nilai R2 menunjukkan nilai 51%
+   - Random Forest Regression
+Nilai R2 menunjukkan nilai 50%
+   - Gradient Boosting Regression
+Nilai R2 menunjukkan nilai 54%
+
+**Kesimpulan**
+Gradient Boosting Regression Menunjukkan performa terbaik, karena berhasil memprediksi 54% dari variasi rata-rata rating
+
 **---Ini adalah bagian akhir laporan---**
+
