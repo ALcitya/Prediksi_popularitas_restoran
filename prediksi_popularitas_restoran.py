@@ -313,10 +313,12 @@ fungsi random_state=42 gunanya untuk memastikan agar setiap dilakukan pembagian 
 numeric_column = ['Pricing_for_2', 'Dining_Review_Count', 'Delivery_Rating_Count',
                   'Category_TargetEncoded','Locality_TargetEncoded']
 scaler = StandardScaler()
-df[numeric_column]= scaler.fit_transform(df[numeric_column])
+X_train[numeric_column]= scaler.fit_transform(X_train[numeric_column])
+X_test[numeric_column]= scaler.transform(X_test[numeric_column])
 
-"""varibel numeric_column akan mengambil nama kolom didalam tuple. variabel scaler akan memanggil fungsi StandartScaler dari libarary sklearn.
-fungsi scaler.fit_transform akan melakukan stadarisasi yang sama terhadap kolom di variabel numeric_column
+"""varibel numeric_column akan mengambil nama kolom didalam tuple. variabel scaler akan memanggil fungsi StandartScaler dari library sklearn.
+fungsi scaler.fit_transform akan melakukan stadarisasi yang sama terhadap data pelatihan.
+Fungsi Scaler.transform melakukan standarisasi terhadap data uji
 
 # 6. Model Selection
 """
